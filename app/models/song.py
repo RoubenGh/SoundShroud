@@ -18,5 +18,6 @@ class Song(db.Model):
             'user_id': self.user_id,
             'song_url': self.song_url,
             'title': self.title,
-            'created_at': self.created_at
+            'created_at': self.created_at,
+            'user_info': self.user.to_dict()
         }

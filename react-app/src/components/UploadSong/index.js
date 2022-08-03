@@ -19,7 +19,7 @@ function UploadSong() {
 		const data = {
 			title,
 			file,
-			userId: user?.id,
+			user_id: user?.id,
 			username: user?.username,
 		};
 

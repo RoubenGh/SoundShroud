@@ -49,13 +49,12 @@ export const getSongById = (id) => async (dispatch) => {
 };
 
 export const uploadSong = (song) => async (dispatch) => {
-	const { user_id, title, file, username } = song;
-
+	const { user_id, title, file } = song;
+	console.log(user_id, 'THIS IS MY USERid')
 	const form = new FormData();
 	form.append('user_id', user_id);
 	form.append('title', title);
 	form.append('file', file);
-	form.append('username', username);
 	const response = await fetch('/api/songs/upload', {
 		method: 'POST',
 		body: form,
@@ -91,4 +90,4 @@ const songReducer = (state = initialState, action) => {
 	}
 };
 
-export default songReducer
+export default songReducer;
