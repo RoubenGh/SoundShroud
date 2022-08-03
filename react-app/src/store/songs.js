@@ -19,10 +19,10 @@ const addSong = (song) => ({
 	song,
 });
 
-// const editSong = (song) => ({
-// 	type: EDIT_SONG,
-// 	song,
-// });
+const editSong = (song) => ({
+	type: EDIT_SONG,
+	song,
+});
 
 // const removeSong = (song) => ({
 // 	type: REMOVE_SONG,
@@ -50,7 +50,6 @@ export const getSongById = (id) => async (dispatch) => {
 
 export const uploadSong = (song) => async (dispatch) => {
 	const { user_id, title, file } = song;
-	console.log(user_id, 'THIS IS MY USERid')
 	const form = new FormData();
 	form.append('user_id', user_id);
 	form.append('title', title);
@@ -63,6 +62,23 @@ export const uploadSong = (song) => async (dispatch) => {
 	if (response.ok) {
 		const data = await response.json();
 		dispatch(addSong(data));
+		return data;
+	}
+};
+
+export const editSongTitle = (song) => async (dispatch) => {
+	const { id, title } = song;
+	const response = await fetch(`/api/songs/edit/${id}`, {
+		method: 'PUT',
+		body: JSON.stringify({ title }),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
+
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(editSong(data));
 		return data;
 	}
 };
@@ -85,6 +101,8 @@ const songReducer = (state = initialState, action) => {
 			return { ...state, [action.song.id]: action.song };
 		case ADD_SONG:
 			return { ...state, [action.song.id]: action.song };
+		case EDIT_SONG:
+			return { ...state, [action.song.id]: { ...action.song } };
 		default:
 			return state;
 	}

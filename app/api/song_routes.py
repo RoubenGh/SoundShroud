@@ -35,7 +35,7 @@ def get_single_song(id):
 def post_song():
     form = UploadSongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.data, '000000000000000000000')
+    print(form.user_id.data, '000000000000000000000')
     if form.validate_on_submit():
         if "file" not in request.files:
             return "No user_file key in request.files"
@@ -43,8 +43,8 @@ def post_song():
         if file:
             file_url = upload_file_to_s3(file, Config.S3_BUCKET)
             file = Song(
-                user_id=current_user.id,
-                title=request.form.get('title'),
+                user_id=form.user_id.data,
+                title=form.title.data,
                 song_url=file_url
             )
             db.session.add(file)
