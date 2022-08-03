@@ -1,5 +1,5 @@
 export const GET_SONGS = 'GET_SONGS';
-export const GET_SONG = 'GET_SONG';
+// export const GET_SONG = 'GET_SONG';
 export const ADD_SONG = 'ADD_SONG';
 export const EDIT_SONG = 'EDIT_SONG';
 export const REMOVE_SONG = 'REMOVE_SONG';
@@ -9,10 +9,10 @@ const getSongs = (songs) => ({
 	songs,
 });
 
-const getSong = (song) => ({
-	type: GET_SONG,
-	song,
-});
+// const getSong = (song) => ({
+// 	type: GET_SONG,
+// 	song,
+// });
 
 const addSong = (song) => ({
 	type: ADD_SONG,
@@ -38,15 +38,15 @@ export const getAllSongs = () => async (dispatch) => {
 	}
 };
 
-export const getSongById = (id) => async (dispatch) => {
-	const response = await fetch(`/api/songs/${id}`);
+// export const getSongById = (id) => async (dispatch) => {
+// 	const response = await fetch(`/api/songs/${id}`);
 
-	if (response.ok) {
-		const data = await response.json();
-		dispatch(getSong(data));
-		return data;
-	}
-};
+// 	if (response.ok) {
+// 		const data = await response.json();
+// 		dispatch(getSong(data));
+// 		return data;
+// 	}
+// };
 
 export const uploadSong = (song) => async (dispatch) => {
 	const { user_id, title, file } = song;
@@ -97,8 +97,8 @@ const songReducer = (state = initialState, action) => {
 				newState[song.id] = song;
 			});
 			return newState;
-		case GET_SONG:
-			return { ...state, [action.song.id]: action.song };
+		// case GET_SONG:
+		// 	return { ...state, [action.song.id]: action.song };
 		case ADD_SONG:
 			return { ...state, [action.song.id]: action.song };
 		case EDIT_SONG:

@@ -14,10 +14,12 @@ import 'react-h5-audio-player/lib/styles.css';
 
 import UploadSong from './components/UploadSong';
 import Discover from './components/Discover';
+import SplashPage from './components/SplashPage';
+import SingleSong from './components/SingleSong';
 
 import './index.css';
 import { getAllSongs } from './store/songs';
-import SplashPage from './components/SplashPage';
+
 
 function App() {
 	const [loaded, setLoaded] = useState(false);
@@ -69,6 +71,9 @@ function App() {
 				</Route>
 				<Route path="/discover" exact={true}>
 					<Discover playSong={playSong}/>
+				</Route>
+				<Route path="/songs/:id" exact={true}>
+					<SingleSong playSong={playSong}/>
 				</Route>
 			</Switch>
 			<div className="audio-player-footer">
