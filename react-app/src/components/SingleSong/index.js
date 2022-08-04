@@ -1,12 +1,10 @@
 import './SingleSong.css';
 import React from 'react';
-import { getAllSongs, editSongTitle } from '../../store/songs';
+import { getAllSongs, deleteSong } from '../../store/songs';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory, Redirect, NavLink } from 'react-router-dom';
 import EditSongModal from '../EditSong/EditSongModal';
-
-
 
 function SingleSong({ playSong }) {
 	const history = useHistory();
@@ -25,17 +23,11 @@ function SingleSong({ playSong }) {
 		setIsLoaded(true);
 	}, [dispatch, id]);
 
-	// const handleSubmit = (e) => {
-	// 	e.preventDefault();
-
-	// 	const data = {
-    //         id: oneSong.id,
-	// 		title,
-	// 	};
-	// 	dispatch(editSongTitle(data));
-	// };
-
-	// if (!oneSong) return null;
+	const songDeleter = (e) => {
+		dispatch(deleteSong(oneSong));
+		console.log('IM IN THE SONGDELETER FUNCTION')
+		history.push('/discover');
+	};
 
 	return (
 		isLoaded && (
@@ -47,7 +39,12 @@ function SingleSong({ playSong }) {
 				>
 					{oneSong.title}
 				</button>
-				<EditSongModal />
+				<div>
+					<EditSongModal />
+				</div>
+				<div>
+					<button onClick={songDeleter}>Delete Song</button>
+				</div>
 			</div>
 		)
 	);

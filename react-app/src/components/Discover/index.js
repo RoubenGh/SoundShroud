@@ -14,7 +14,7 @@ function Discover({ playSong }) {
 
 	useEffect(() => {
 		dispatch(getAllSongs());
-	}, []);
+	}, [dispatch]);
 
 	return (
 		<div>

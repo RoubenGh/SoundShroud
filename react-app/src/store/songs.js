@@ -24,10 +24,10 @@ const editSong = (song) => ({
 	song,
 });
 
-// const removeSong = (song) => ({
-// 	type: REMOVE_SONG,
-// 	song,
-// });
+const removeSong = (song) => ({
+	type: REMOVE_SONG,
+	song,
+});
 
 export const getAllSongs = () => async (dispatch) => {
 	const response = await fetch('/api/songs/discover');
@@ -83,6 +83,16 @@ export const editSongTitle = (song) => async (dispatch) => {
 	}
 };
 
+export const deleteSong = (song) => async (dispatch) => {
+	const response = await fetch(`/api/songs/delete/${song.id}`, {
+		method: 'DELETE',
+	});
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(removeSong(data));
+	}
+};
+
 // REDUCER
 
 const initialState = {};
@@ -103,6 +113,11 @@ const songReducer = (state = initialState, action) => {
 			return { ...state, [action.song.id]: action.song };
 		case EDIT_SONG:
 			return { ...state, [action.song.id]: { ...action.song } };
+		case REMOVE_SONG:
+			newState = { ...state };
+			delete newState[action.song.id];
+			return newState
+			// return delete { ...state, [action.song.id]: action.song };
 		default:
 			return state;
 	}
