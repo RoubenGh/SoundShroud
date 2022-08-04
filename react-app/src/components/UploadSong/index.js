@@ -12,9 +12,12 @@ function UploadSong() {
 
 	const [title, setTitle] = useState('');
 	const [file, setFile] = useState(null);
+	const [validationError, setValidationError] = useState([]);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setValidationError([]);
+		const errors = [];
 
 		const data = {
 			title,
@@ -23,8 +26,20 @@ function UploadSong() {
 			username: user?.username,
 		};
 
-		dispatch(uploadSong(data));
-		history.push('/discover');
+		console.log(file.type != 'audio/mpeg', '2222222222')
+		if (
+			file.type != 'audio/mpeg'
+			&&
+			file.type != 'video/mp4'
+		)
+			errors.push('Selected File is not Supported!'); // selected file is not supported
+		if (errors.length) {
+			setValidationError(errors);
+			return;
+		} else {
+			dispatch(uploadSong(data));
+			history.push('/discover');
+		}
 	};
 
 	const handleUpload = async (e) => {
@@ -44,6 +59,9 @@ function UploadSong() {
 					/>
 				</div>
 				<form onSubmit={handleSubmit}>
+					{validationError.map((error, idx) => (
+						<div key={idx}>{error}</div>
+					))}
 					<div>
 						<input
 							type="file"
@@ -55,7 +73,6 @@ function UploadSong() {
 						<button type="submit">Submit</button>
 					</div>
 				</form>
-
 			</div>
 		</div>
 	);
