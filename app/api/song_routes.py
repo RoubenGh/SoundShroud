@@ -65,3 +65,15 @@ def edit_song(id):
         song.title = form.title.data
         db.session.commit()
         return song.to_dict()
+
+
+# DELETE SINGLE SONG
+@song_routes.route('/delete/<int:id>', methods=['DELETE'])
+# @login_required
+def delete_song(id):
+    song = Song.query.get(id)
+    old_song = song.to_dict()
+    db.session.delete(song)
+    db.session.commit()
+    # print('THIS IS OUR OLD SONG', old_song)
+    return old_song
