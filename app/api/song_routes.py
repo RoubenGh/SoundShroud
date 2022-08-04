@@ -75,5 +75,4 @@ def delete_song(id):
     old_song = song.to_dict()
     db.session.delete(song)
     db.session.commit()
-    # print('THIS IS OUR OLD SONG', old_song)
     return old_song
