@@ -1,7 +1,6 @@
 from flask_wtf import FlaskForm
 from wtforms import StringField, SubmitField, TextAreaField
 from wtforms.validators import DataRequired, Length, ValidationError
-from app.models import Comment
 
 def comment_field_empty(form, field):
     comment_body = field.data
