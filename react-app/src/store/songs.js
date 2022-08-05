@@ -117,7 +117,6 @@ const songReducer = (state = initialState, action) => {
 			newState = { ...state };
 			delete newState[action.song.id];
 			return newState
-			// return delete { ...state, [action.song.id]: action.song };
 		default:
 			return state;
 	}

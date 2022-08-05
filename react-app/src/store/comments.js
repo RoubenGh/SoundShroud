@@ -71,6 +71,18 @@ export const editCommentBySongId = (song) => async (dispatch) => {
 	}
 };
 
+export const deleteCommentBySongId = (song) => async (dispatch) => {
+	const { song_id, id } = song;
+	const response = await fetch(`/api/songs/${song_id}/comments/${id}`, {
+		method: 'DELETE',
+	});
+
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(deleteComment(data));
+	}
+};
+
 const initialState = {};
 
 const commentReducer = (state = initialState, action) => {
@@ -87,10 +99,10 @@ const commentReducer = (state = initialState, action) => {
 			return { ...state, [action.comment.id]: action.comment };
 		case EDIT_COMMENT:
 			return { ...state, [action.comment.id]: { ...action.comment } };
-
-		// case DELETE_COMMENT:
-		//     newState = { ...state, comments: state.comments.filter(comment => comment.id !== action.comment.id) };
-		//     return newState;
+		case DELETE_COMMENT:
+			newState = { ...state };
+			delete newState[action.comment.id];
+			return newState;
 		default:
 			return state;
 	}

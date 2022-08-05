@@ -13,6 +13,7 @@ function SingleSong({ playSong }) {
 	const { id } = useParams();
 
 	const oneSong = useSelector((state) => state.songs[id]);
+	console.log('55555555', oneSong)
 	const user = useSelector((state) => state.session.user);
 
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -38,12 +39,14 @@ function SingleSong({ playSong }) {
 				>
 					{oneSong.title}
 				</button>
+					{oneSong?.user_id === user?.id ? (
 				<div>
 					<EditSongModal />
-				</div>
-				<div>
 					<button onClick={songDeleter}>Delete Song</button>
 				</div>
+				) : (
+					<></>
+)}
 				<AllComments/>
 
 			</div>
