@@ -3,6 +3,8 @@ import { getCommentsBySongId, addCommentBySongId } from '../../store/comments';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory, Redirect, NavLink } from 'react-router-dom';
+import EditComment from '../EditComment';
+import EditCommentModal from '../EditComment/EditCommentModal';
 
 function AllComments() {
 	const history = useHistory();
@@ -10,12 +12,11 @@ function AllComments() {
 	const { id } = useParams();
 
 	const oneSong = useSelector((state) => state.songs[id]);
-	// console.log(oneSong, 'this is my one song --------');
 	const user = useSelector((state) => state.session.user);
     const commentObject = useSelector((state) => state.comments);
 
     const singleComment = Object.values(commentObject)
-    console.log(singleComment, '922222222222222222222222')
+	console.log(singleComment, '')
 
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [comment, setComment] = useState('');
@@ -37,14 +38,14 @@ function AllComments() {
 			user_id: user.id,
 			song_id: oneSong.id,
 			content: comment,
-			username: user.username,
+			username: user.username
+
 		};
 
 		await dispatch(addCommentBySongId(data));
 		setComment('');
 	};
 
-	if (!user) return <Redirect to="/login" />;
 
 	return (
 		isLoaded && (
@@ -63,8 +64,10 @@ function AllComments() {
 				<div>
 					{singleComment.map((comment) => (
 						<div key={comment.id}>
-							<p>{comment.content}</p>
-							<p>{comment.username}</p>
+							<h2>{comment.content}</h2>
+							{comment?.user_id === user.id ? (
+								<EditCommentModal commentId={comment.id}/>) : (<></>)}
+								<p>{comment.username}</p>
 						</div>
 					))}
 				</div>

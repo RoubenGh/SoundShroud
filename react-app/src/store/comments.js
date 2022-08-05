@@ -54,50 +54,46 @@ export const addCommentBySongId = (song) => async (dispatch) => {
 	}
 };
 
+export const editCommentBySongId = (song) => async (dispatch) => {
+	const { song_id, content, id } = song;
+	const response = await fetch(`/api/songs/${song_id}/comments/${id}`, {
+		method: 'PUT',
+		body: JSON.stringify({ content }),
+		headers: {
+			'Content-Type': 'application/json',
+		},
+	});
 
-// export const editCommentBySongId = (song) => async (dispatch) => {
-//     const { user_id, song_id, content, } = song;
-//     const response = await fetch(`/api/songs/${song_id}`, {
-//         method: 'POST',
-//         body: form,
-//     });
+	if (response.ok) {
+		const data = await response.json();
+		dispatch(editComment(data));
+		return data;
+	}
+};
 
-//     if (response.ok) {
-//         const data = await response.json();
-//         dispatch(editComment(data));
-//         return data;
-//     }
-// }
-
-const initialState = {}
+const initialState = {};
 
 const commentReducer = (state = initialState, action) => {
-    let newState;
-    switch (action.type) {
-        case GET_COMMENTS:
-            newState = {};
-            const comments = action.comments;
-            comments.comments.forEach((comment) => {
-                newState[comment.id] = comment;
-            });
-            return newState;
-        case ADD_COMMENT:
-            return { ...state, [action.comment.id]: action.comment };
-        // case DELETE_COMMENT:
-        //     newState = { ...state, comments: state.comments.filter(comment => comment.id !== action.comment.id) };
-        //     return newState;
-        // case EDIT_COMMENT:
-        //     newState = { ...state, comments: state.comments.map(comment => {
-        //         if (comment.id === action.comment.id) {
-        //             return action.comment;
-        //         } else {
-        //             return comment;
-        //         }
-        //     }) };
-        //     return newState;
-        default:
-            return state;
-    }
-}
+	let newState;
+	switch (action.type) {
+		case GET_COMMENTS:
+			newState = {};
+			const comments = action.comments;
+			comments.comments.forEach((comment) => {
+				newState[comment.id] = comment;
+			});
+			return newState;
+		case ADD_COMMENT:
+			return { ...state, [action.comment.id]: action.comment };
+		case EDIT_COMMENT:
+			return { ...state, [action.comment.id]: { ...action.comment } };
+
+		// case DELETE_COMMENT:
+		//     newState = { ...state, comments: state.comments.filter(comment => comment.id !== action.comment.id) };
+		//     return newState;
+		default:
+			return state;
+	}
+};
 
 export default commentReducer;

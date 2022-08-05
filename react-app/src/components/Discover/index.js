@@ -26,7 +26,7 @@ function Discover({ playSong }) {
 								playSong(song);
 							}}
 						>
-							{song.title}
+							<NavLink to={`/songs/${song.id}`}>{song.title}</NavLink>
 						</button>
 						<p>{song.username}</p>
 					</div>

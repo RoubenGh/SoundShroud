@@ -47,6 +47,7 @@ function SingleSong({ playSong }) {
 					<button onClick={songDeleter}>Delete Song</button>
 				</div>
 				<AllComments/>
+				
 			</div>
 		)
 	);

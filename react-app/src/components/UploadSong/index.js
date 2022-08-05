@@ -26,11 +26,11 @@ function UploadSong() {
 			username: user?.username,
 		};
 
-		console.log(file.type != 'audio/mpeg', '2222222222')
+		console.log(file.type !== 'audio/mpeg', '2222222222')
 		if (
-			file.type != 'audio/mpeg'
+			file.type !== 'audio/mpeg'
 			&&
-			file.type != 'video/mp4'
+			file.type !== 'video/mp4'
 		)
 			errors.push('Selected File is not Supported!'); // selected file is not supported
 		if (errors.length) {
