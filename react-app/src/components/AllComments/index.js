@@ -16,7 +16,6 @@ function AllComments() {
     const commentObject = useSelector((state) => state.comments);
 
     const singleComment = Object.values(commentObject)
-	console.log(singleComment, '')
 
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [comment, setComment] = useState('');
@@ -33,6 +32,12 @@ function AllComments() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		if(!user) {
+			history.push('/login')
+			return
+		}
+
 
 		const data = {
 			user_id: user.id,
@@ -65,7 +70,7 @@ function AllComments() {
 					{singleComment.map((comment) => (
 						<div key={comment.id}>
 							<h2>{comment.content}</h2>
-							{comment?.user_id === user.id ? (
+							{comment?.user_id === user?.id ? (
 								<EditCommentModal commentId={comment.id}/>) : (<></>)}
 								<p>{comment.username}</p>
 						</div>

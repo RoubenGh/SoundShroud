@@ -13,7 +13,6 @@ function SingleSong({ playSong }) {
 	const { id } = useParams();
 
 	const oneSong = useSelector((state) => state.songs[id]);
-	console.log('this is my one song', oneSong);
 	const user = useSelector((state) => state.session.user);
 
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -26,7 +25,6 @@ function SingleSong({ playSong }) {
 
 	const songDeleter = (e) => {
 		dispatch(deleteSong(oneSong));
-		console.log('IM IN THE SONGDELETER FUNCTION')
 		history.push('/discover');
 	};
 
@@ -47,7 +45,7 @@ function SingleSong({ playSong }) {
 					<button onClick={songDeleter}>Delete Song</button>
 				</div>
 				<AllComments/>
-				
+
 			</div>
 		)
 	);

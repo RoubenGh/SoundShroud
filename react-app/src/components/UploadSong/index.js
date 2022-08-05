@@ -26,7 +26,6 @@ function UploadSong() {
 			username: user?.username,
 		};
 
-		console.log(file.type !== 'audio/mpeg', '2222222222')
 		if (
 			file.type !== 'audio/mpeg'
 			&&
