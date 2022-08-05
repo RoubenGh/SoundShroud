@@ -33,8 +33,8 @@ export const getCommentsBySongId = (song_id) => async (dispatch) => {
 	}
 };
 
-export const addCommentBySongId = (data) => async (dispatch) => {
-	const { user_id, song_id, content, username } = data;
+export const addCommentBySongId = (song) => async (dispatch) => {
+	const { user_id, song_id, content, username } = song;
 
 	const form = new FormData();
 	form.append('user_id', user_id);
@@ -55,3 +55,49 @@ export const addCommentBySongId = (data) => async (dispatch) => {
 };
 
 
+// export const editCommentBySongId = (song) => async (dispatch) => {
+//     const { user_id, song_id, content, } = song;
+//     const response = await fetch(`/api/songs/${song_id}`, {
+//         method: 'POST',
+//         body: form,
+//     });
+
+//     if (response.ok) {
+//         const data = await response.json();
+//         dispatch(editComment(data));
+//         return data;
+//     }
+// }
+
+const initialState = {}
+
+const commentReducer = (state = initialState, action) => {
+    let newState;
+    switch (action.type) {
+        case GET_COMMENTS:
+            newState = {};
+            const comments = action.comments;
+            comments.comments.forEach((comment) => {
+                newState[comment.id] = comment;
+            });
+            return newState;
+        case ADD_COMMENT:
+            return { ...state, [action.comment.id]: action.comment };
+        // case DELETE_COMMENT:
+        //     newState = { ...state, comments: state.comments.filter(comment => comment.id !== action.comment.id) };
+        //     return newState;
+        // case EDIT_COMMENT:
+        //     newState = { ...state, comments: state.comments.map(comment => {
+        //         if (comment.id === action.comment.id) {
+        //             return action.comment;
+        //         } else {
+        //             return comment;
+        //         }
+        //     }) };
+        //     return newState;
+        default:
+            return state;
+    }
+}
+
+export default commentReducer;

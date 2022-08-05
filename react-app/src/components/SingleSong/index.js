@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory, Redirect, NavLink } from 'react-router-dom';
 import EditSongModal from '../EditSong/EditSongModal';
+import AllComments from '../AllComments';
 
 function SingleSong({ playSong }) {
 	const history = useHistory();
@@ -45,6 +46,7 @@ function SingleSong({ playSong }) {
 				<div>
 					<button onClick={songDeleter}>Delete Song</button>
 				</div>
+				<AllComments/>
 			</div>
 		)
 	);
