@@ -3,6 +3,7 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
 import SignUpModal from './auth/SignUpModal';
+import LoginModal from './auth/LoginModal';
 
 const NavBar = () => {
   return (
@@ -14,9 +15,10 @@ const NavBar = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink to='/login' exact={true} activeClassName='active'>
+          {/* <NavLink to='/login' exact={true} activeClassName='active'>
             Login
-          </NavLink>
+          </NavLink> */}
+          <LoginModal />
         </li>
         <li>
           {/* <NavLink to='/sign-up' exact={true} activeClassName='active'>
