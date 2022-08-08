@@ -22,6 +22,7 @@ const SignUpForm = ({ setShowModal }) => {
 		if (
 			username.length <= 40 &&
 			email.length <= 255 &&
+			email.match(emailRegex) &&
 			password.length <= 255 &&
 			password === repeatPassword
 		) {

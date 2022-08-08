@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import { login } from '../../store/session';
 
 const LoginForm = ({ setShowModal }) => {
@@ -16,6 +16,9 @@ const LoginForm = ({ setShowModal }) => {
 		const data = await dispatch(login(email, password));
 		if (data) {
 			setErrors(data);
+		} else {
+			setShowModal(false);
+			history.push('/discover');
 		}
 	};
 
@@ -27,16 +30,17 @@ const LoginForm = ({ setShowModal }) => {
 		setPassword(e.target.value);
 	};
 
-	if (user) {
-		setShowModal(false);
-		history.push('/discover');
-	}
-
 	const demoUser = (e) => {
 		const email = 'SoundShroudDemo@aa.io';
 		const password = 'password';
 		dispatch(login(email, password));
+		setShowModal(false);
+		history.push('/discover');
 	};
+
+	if (user) {
+		return <Redirect to="/discover" />;
+	}
 
 	return (
 		<>
