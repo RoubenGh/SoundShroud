@@ -39,27 +39,27 @@ const SignUpForm = ({ setShowModal }) => {
 			}
 		} else {
 			if (!username) {
-				validationErrors.push('username : Username is required');
+				validationErrors.push('Username is required');
 			}
 			if (username.length < 4 || username.length > 40) {
 				validationErrors.push(
-					'username : Username must be between 4 and 40 characters'
+					'Username must be between 4 and 40 characters'
 				);
 			}
 			if (!email) {
-				validationErrors.push('email : Email is required');
+				validationErrors.push('Email is required');
 			}
 			if (!email.match(emailRegex)) {
-				validationErrors.push('email : Email is not valid');
+				validationErrors.push('Email is not valid');
 			}
 			if (email.length < 9 || email.length > 255) {
 				validationErrors.push(
-					'email : Email must be between 9 and 255 characters'
+					'Email must be between 9 and 255 characters'
 				);
 			}
 			if (password.length < 8 || password.length > 255) {
 				validationErrors.push(
-					'password : Password must be between 8 and 255 characters'
+					'Password must be between 8 and 255 characters'
 				);
 			}
 			if (!password || !repeatPassword) {
@@ -67,11 +67,11 @@ const SignUpForm = ({ setShowModal }) => {
 			}
 			if (password.length > 255) {
 				validationErrors.push(
-					'password : Password must be less than 255 characters'
+					'Password must be less than 255 characters'
 				);
 			} else {
 				if (password !== repeatPassword) {
-					validationErrors.push('password : Passwords do not match');
+					validationErrors.push('Passwords do not match');
 				}
 			}
 			setErrors(validationErrors);
