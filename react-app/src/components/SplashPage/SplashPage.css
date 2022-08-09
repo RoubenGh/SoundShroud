@@ -161,10 +161,12 @@
 html {
 	background-color: rgb(242, 242, 242);
 	height: 100%;
+	left: 0;
 }
 
 body {
 	margin-top: 0;
+	margin-left: 0;
 }
 
 .splashpage-bottom-part {
