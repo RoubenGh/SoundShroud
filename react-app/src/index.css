@@ -18,3 +18,34 @@
     justify-content: center !important;
     align-items: center;
 }
+
+.rhap_button-clear.rhap_main-controls-button.rhap_play-pause-button {
+	color: #f50;
+}
+
+.rhap_progress-indicator {
+	background-color: #f50 !important;
+}
+
+.rhap_volume-indicator {
+	background-color: #f50 !important;
+}
+
+.rhap_header {
+	font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+	font-weight: 600 !important;
+}
+
+#rhap_current-time.rhap_time.rhap_current-time {
+	font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+	font-weight: 600 !important;
+}
+
+.rhap_time.rhap_total-time {
+	font-family: Interstate,Lucida Grande,Lucida Sans Unicode,Lucida Sans,Garuda,Verdana,Tahoma,sans-serif;
+	font-weight: 600 !important;
+}
+
+.rhap_button-clear.rhap_volume-button {
+	color: black;
+}
