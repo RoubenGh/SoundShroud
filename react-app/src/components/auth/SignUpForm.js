@@ -21,9 +21,12 @@ const SignUpForm = ({ setShowModal }) => {
 
 		if (
 			username.length <= 40 &&
+			username.length >= 4 &&
 			email.length <= 255 &&
+			email.length >= 9 &&
 			email.match(emailRegex) &&
 			password.length <= 255 &&
+			password.length >= 8 &&
 			password === repeatPassword
 		) {
 			const data = await dispatch(signUp(username, email, password));
@@ -38,9 +41,9 @@ const SignUpForm = ({ setShowModal }) => {
 			if (!username) {
 				validationErrors.push('username : Username is required');
 			}
-			if (username.length > 40) {
+			if (username.length < 4 || username.length > 40) {
 				validationErrors.push(
-					'username : Username must be less than 40 characters'
+					'username : Username must be between 4 and 40 characters'
 				);
 			}
 			if (!email) {
@@ -49,9 +52,14 @@ const SignUpForm = ({ setShowModal }) => {
 			if (!email.match(emailRegex)) {
 				validationErrors.push('email : Email is not valid');
 			}
-			if (email.length > 255) {
+			if (email.length < 9 || email.length > 255) {
 				validationErrors.push(
-					'email : Email must be less than 255 characters'
+					'email : Email must be between 9 and 255 characters'
+				);
+			}
+			if (password.length < 8 || password.length > 255) {
+				validationErrors.push(
+					'password : Password must be between 8 and 255 characters'
 				);
 			}
 			if (!password || !repeatPassword) {
@@ -91,51 +99,71 @@ const SignUpForm = ({ setShowModal }) => {
 	}
 
 	return (
-		<form onSubmit={onSignUp}>
-			<div>
-				{errors.map((error, ind) => (
-					<div key={ind}>{error}</div>
-				))}
+		<div className="signin-modal-container">
+			<div className="signin-modal-container-child">
+				<div>
+					<h2 className="signin-login-title">
+						Create your SoundShroud account
+					</h2>
+					<form className="signin-form" onSubmit={onSignUp}>
+						<div className="signin-login-errors">
+							{errors.map((error, ind) => (
+								<div key={ind}>{error}</div>
+							))}
+						</div>
+						<div className="signin-email-container">
+							<input
+								className="signin-email-input"
+								type="text"
+								name="username"
+								placeholder="Username"
+								onChange={updateUsername}
+								value={username}
+								required
+							></input>
+						</div>
+						<div className="signin-email-container">
+							<input
+								className="signin-email-input"
+								type="text"
+								name="email"
+								placeholder="Email"
+								onChange={updateEmail}
+								value={email}
+								required
+							></input>
+						</div>
+						<div className="signin-email-container">
+							<input
+								className="signin-email-input"
+								type="password"
+								name="password"
+								placeholder="Password"
+								onChange={updatePassword}
+								value={password}
+								required
+							></input>
+						</div>
+						<div className="signin-email-container">
+							<input
+								className="signin-email-input"
+								type="password"
+								name="repeat_password"
+								onChange={updateRepeatPassword}
+								value={repeatPassword}
+								placeholder="Confirm Password"
+								required
+							></input>
+						</div>
+						<div className="signin-button-container">
+							<button className="signin-btn" type="submit">
+								Continue
+							</button>
+						</div>
+					</form>
+				</div>
 			</div>
-			<div>
-				<label>User Name</label>
-				<input
-					type="text"
-					name="username"
-					onChange={updateUsername}
-					value={username}
-				></input>
-			</div>
-			<div>
-				<label>Email</label>
-				<input
-					type="text"
-					name="email"
-					onChange={updateEmail}
-					value={email}
-				></input>
-			</div>
-			<div>
-				<label>Password</label>
-				<input
-					type="password"
-					name="password"
-					onChange={updatePassword}
-					value={password}
-				></input>
-			</div>
-			<div>
-				<label>Repeat Password</label>
-				<input
-					type="password"
-					name="repeat_password"
-					onChange={updateRepeatPassword}
-					value={repeatPassword}
-					required={true}
-				></input>
-			</div>
-			<button type="submit">Sign Up</button>
-		</form>
+		</div>
 	);
 };
 
