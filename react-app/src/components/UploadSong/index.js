@@ -3,6 +3,7 @@ import React, { useState, useRef } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { uploadSong } from '../../store/songs';
+import NavBar from '../NavBar';
 
 function UploadSong() {
 	const dispatch = useDispatch();
@@ -26,12 +27,8 @@ function UploadSong() {
 			username: user?.username,
 		};
 
-		console.log(file, '00000000')
-		if (
-			file.type !== 'audio/mpeg'
-			&&
-			file.type !== 'video/mp4'
-		)
+		console.log(file, '00000000');
+		if (file.type !== 'audio/mpeg' && file.type !== 'video/mp4')
 			errors.push('Selected File is not Supported!'); // selected file is not supported
 		if (errors.length) {
 			setValidationError(errors);
@@ -48,33 +45,36 @@ function UploadSong() {
 	};
 
 	return (
-		<div>
-			<h3>Upload Song</h3>
-			<div>
+		<>
+			<NavBar />
+			<div className='main-upload'>
+				<h3>Upload Song</h3>
 				<div>
-					<input
-						placeholder="Title Of Song"
-						value={title}
-						onChange={(e) => setTitle(e.target.value)}
-					/>
-				</div>
-				<form onSubmit={handleSubmit}>
-					{validationError.map((error, idx) => (
-						<div key={idx}>{error}</div>
-					))}
 					<div>
 						<input
-							type="file"
-							name="upload song"
-							onChange={handleUpload}
-							accept=".mp3, .mp4"
+							placeholder="Title Of Song"
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
 						/>
-						<strong>{file?.name}</strong>
-						<button type="submit">Submit</button>
 					</div>
-				</form>
+					<form onSubmit={handleSubmit}>
+						{validationError.map((error, idx) => (
+							<div key={idx}>{error}</div>
+						))}
+						<div>
+							<input
+								type="file"
+								name="upload song"
+								onChange={handleUpload}
+								accept=".mp3, .mp4"
+							/>
+							<strong>{file?.name}</strong>
+							<button type="submit">Submit</button>
+						</div>
+					</form>
+				</div>
 			</div>
-		</div>
+		</>
 	);
 }
 
