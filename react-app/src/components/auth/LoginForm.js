@@ -71,7 +71,7 @@ const LoginForm = ({ setShowModal }) => {
 					/>
 				</div>
 			</form>
-			<button onClick={onLogin} type="submit">
+			<button onClick={onLogin} type="submit" >
 				Login
 			</button>
 			<button onClick={demoUser} type="submit">

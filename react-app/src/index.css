@@ -1,7 +1,20 @@
 /* TODO Add site wide styles */
-.audio-player-footer{
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100%;
+.audio-player-footer {
+	position: fixed;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+}
+
+.rhap_additional-controls {
+	display: flex;
+	flex: 0 !important;
+	align-items: center;
+}
+
+.rhap_volume-controls {
+    display: flex;
+    flex: 1 0 auto;
+    justify-content: center !important;
+    align-items: center;
 }

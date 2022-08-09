@@ -7,7 +7,7 @@ const LoginModal = () => {
 
 	return (
 		<>
-			<button onClick={() => setShowModal(true)}>Login </button>
+			<button  className='splash-page-login-btn' onClick={() => setShowModal(true)}>Sign in</button>
 			{showModal && (
 				<Modal onClose={() => setShowModal(false)}>
 					<LoginForm setShowModal={setShowModal} />

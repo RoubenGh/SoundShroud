@@ -49,23 +49,23 @@ function App() {
 
 	return (
 		<BrowserRouter>
-			<NavBar />
 			<Switch>
-				<Route path="/login" exact={true}>
-					<LoginForm />
-				</Route>
-				<Route path="/sign-up" exact={true}>
-					<SignUpForm />
-				</Route>
-				<ProtectedRoute path="/users" exact={true}>
-					<UsersList />
-				</ProtectedRoute>
-				<ProtectedRoute path="/users/:userId" exact={true}>
-					<User />
-				</ProtectedRoute>
 				<Route path="/" exact={true}>
 					<SplashPage playSong={playSong}/>
 				</Route>
+			{/* <NavBar /> */}
+				{/* <Route path="/login" exact={true}>
+					<LoginForm />
+				</Route> */}
+				<Route path="/sign-up" exact={true}>
+					<SignUpForm />
+				</Route>
+				{/* <ProtectedRoute path="/users" exact={true}>
+					<UsersList />
+				</ProtectedRoute> */}
+				<ProtectedRoute path="/users/:userId" exact={true}>
+					<User />
+				</ProtectedRoute>
 				<Route path="/upload" exact={true}>
 					<UploadSong />
 				</Route>
@@ -83,7 +83,12 @@ function App() {
 					onPlay={(e) => console.log('onPlay')}
 					volume={0.1}
 					header={currentSongTitle}
-					// other props here
+					showSkipControls={false}
+					showJumpControls={false}
+					showAdditionalControls={false}
+					layout={'horizontal-reverse'}
+					customAdditionalControls={[]}
+					hasDefaultKeyBindings={true}
 				/>
 			</div>
 		</BrowserRouter>

@@ -7,7 +7,7 @@ const SignUpModal = () => {
 
 	return (
 		<>
-			<button onClick={() => setShowModal(true)}>Create account </button>
+			<button className='splashpage-create-account-btn' onClick={() => setShowModal(true)}>Create account</button>
 			{showModal && (
 				<Modal onClose={() => setShowModal(false)}>
 					<SignUpForm setShowModal={setShowModal} />

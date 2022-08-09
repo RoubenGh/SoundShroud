@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { NavLink, Redirect } from 'react-router-dom';
 import { getAllSongs } from '../../store/songs';
+import NavBar from '../NavBar';
 
 function Discover({ playSong }) {
 	const dispatch = useDispatch();
@@ -17,22 +18,25 @@ function Discover({ playSong }) {
 	}, [dispatch]);
 
 	return (
-		<div>
-			{songs.map((song) => {
-				return (
-					<div key={song.id}>
-						<button
-							onClick={(e) => {
-								playSong(song);
-							}}
-						>
-							<NavLink to={`/songs/${song.id}`}>{song.title}</NavLink>
-						</button>
-						<p>{song.username}</p>
-					</div>
-				);
-			})}
-		</div>
+		<>
+			<NavBar />
+			<div>
+				{songs.map((song) => {
+					return (
+						<div key={song.id}>
+							<button
+								onClick={(e) => {
+									playSong(song);
+								}}
+							>
+								<NavLink to={`/songs/${song.id}`}>{song.title}</NavLink>
+							</button>
+							<p>{song.username}</p>
+						</div>
+					);
+				})}
+			</div>
+		</>
 	);
 }
 
