@@ -34,13 +34,13 @@ function SplashPage({ playSong }) {
 								SoundShroud gives you space to create, find your fans,
 								and connect with other artists.
 							</p>
-							<a
+							{/* <a
 									className="github-name-footer"
 									target="_blank"
 									href="https://github.com/RoubenGh"
 								>
 									<div className="our-names">By: Rouben Ghambaryan</div>
-								</a>
+								</a> */}
 						</div>
 					</div>
 				</div>
