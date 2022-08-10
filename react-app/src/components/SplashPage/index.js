@@ -65,7 +65,7 @@ function SplashPage({ playSong }) {
 											<div className="splashpage-singlesong-container">
 												<img
 													className="splashpage-single-song-art"
-													src="https://media.istockphoto.com/vectors/sound-waves-motion-sound-wave-abstract-background-vector-id1176100626?k=20&m=1176100626&s=170667a&w=0&h=im5WAvTOvnPqS1EfPjq6MaQtqfJ-K6-3sy6fQjfST4Q="
+													src="https://i.imgur.com/dpxY8Vh.png"
 													onClick={(e) => {
 														playSong(song);
 													}}

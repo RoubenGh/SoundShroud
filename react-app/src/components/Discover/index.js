@@ -20,18 +20,38 @@ function Discover({ playSong }) {
 	return (
 		<>
 			<NavBar />
-			<div>
+			<div className="splashpage-search"></div>
+			<div className="splashpage-songs"></div>
+			<div className="splashpage-songs-main-2">
+				<div className="splashpage-songs-title-2">
+					Discover SoundShroud's Top Songs
+				</div>
 				{songs.map((song) => {
 					return (
 						<div key={song.id}>
-							<button
-								onClick={(e) => {
-									playSong(song);
-								}}
-							>
-								<NavLink to={`/songs/${song.id}`}>{song.title}</NavLink>
-							</button>
-							<p>{song.username}</p>
+							<ul className="splashpage-songs-list">
+								<li className="splashpage-singlesong-2">
+									<div className="splashpage-singlesong-container">
+										<img
+											className="splashpage-single-song-art"
+											src="https://i.imgur.com/dpxY8Vh.png"
+											onClick={(e) => {
+												playSong(song);
+											}}
+										/>
+										<div className='discoverpage-clickable-title'>
+											<NavLink
+											className='title-title-discover'
+											to={`/songs/${song.id}`}>
+												{song.title}
+											</NavLink>
+										</div>
+										{/* <p>{song.title}</p> */}
+										<p className='discover-page-username'>{song.user_info.username}</p>
+									</div>
+								</li>
+								<li></li>
+							</ul>
 						</div>
 					);
 				})}
