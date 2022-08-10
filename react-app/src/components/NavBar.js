@@ -10,9 +10,10 @@ const NavBar = () => {
 		<nav className="navbar-main">
 			<ul className="navbar-buttons-left-main">
 				<li className="navbar-left-logo">
-					<NavLink to="/discover" exact={true} />
+					<NavLink className='logotest' to="/discover" exact={true}>
+					</NavLink>
 				</li>
-				<li className='navbar-please-work'>
+				<li className="navbar-please-work">
 					<NavLink
 						to="/discover"
 						exact={true}
@@ -21,15 +22,19 @@ const NavBar = () => {
 						Home
 					</NavLink>
 				</li>
-				<li className='navbar-please-work-2'>
-					<NavLink className="navebar-home-btn-2" to="/upload" exact={true}>
+				<li className="navbar-please-work-2">
+					<NavLink
+						className="navebar-home-btn-2"
+						to="/upload"
+						exact={true}
+					>
 						Upload
 					</NavLink>
 				</li>
 				<li></li>
-				<li className='navbar-please-work-3'>
-					<div className='navbar-logoutbtn-move-toleft'>
-					<LogoutButton />
+				<li className="navbar-please-work-3">
+					<div className="navbar-logoutbtn-move-toleft">
+						<LogoutButton />
 					</div>
 				</li>
 			</ul>

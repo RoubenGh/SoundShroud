@@ -32,9 +32,8 @@
 }
 
 
-
 .navbar-left-logo {
-	display: block;
+	/* display: block; */
 	background-color: black;
 	background: black
 		url('https://a-v2.sndcdn.com/assets/images/peace-cloud-28ad0963.svg')
@@ -42,18 +41,20 @@
 	flex-direction: column;
 	justify-content: center;
 	align-content: center;
-	background-position-x: 12px;
+	/* background-position-x: 12px; */
 	background-size: 48px 22px;
 	width: 69px;
-	margin-right: unset;
+	/* margin-right: unset; */
 	color: #ccc;
 	text-decoration: none;
 	height: 46px;
 	border: 0;
 	font: 0/0 a;
 	text-shadow: none;
-	cursor: pointer;
+	/* cursor: pointer; */
 	position: absolute;
+    outline: 0;
+
 }
 
 .navbar-buttons-left-main {
