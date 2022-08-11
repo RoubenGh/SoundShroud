@@ -11,8 +11,9 @@ function EditSong({ setShowModal }) {
 	const oneSong = useSelector((state) => state.songs[id]);
 	const user = useSelector((state) => state.session.user);
 
+
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [title, setTitle] = useState('');
+	const [title, setTitle] = useState(oneSong.title);
 	const [validationError, setValidationError] = useState([]);
 
 	useEffect(() => {
@@ -55,7 +56,6 @@ function EditSong({ setShowModal }) {
 					</div>
 					<div>
 						<input
-							
 							className="titleofsong-input3"
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
