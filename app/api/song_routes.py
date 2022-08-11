@@ -22,13 +22,6 @@ def get_all_songs():
     return {'songs' : data}
 
 
-# GET SINGLE IMAGE
-@song_routes.route('/<int:id>')
-# @login_required
-def get_single_song(id):
-    song = Song.query.get(id)
-    return song.to_dict()
-
 # POST A SONG
 @song_routes.route('/upload', methods=['POST'])
 # @login_required
@@ -93,6 +86,7 @@ def get_all_comments(id):
 @song_routes.route('/<int:id>/comments/<int:comment_id>')
 # @login_required
 def get_single_comment(id, comment_id):
+    song = Song.query.get(id)
     comment = Comment.query.get(comment_id)
     return comment.to_dict()
 

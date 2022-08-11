@@ -1,26 +1,34 @@
 import React, { useState, useEffect } from 'react';
 import { editCommentBySongId } from '../../store/comments';
-import { getAllSongs } from '../../store/songs';
+import { getAllSongs, editSongTitle } from '../../store/songs';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router-dom';
-import './EditComment.css'
+import { useParams, useHistory, Redirect, NavLink } from 'react-router-dom';
+import { getSingleCommentBySongId } from '../../store/singlecomment';
+import './EditComment.css';
 
 function EditComment({ setShowModal, commentId }) {
 	const dispatch = useDispatch();
 	const { id } = useParams();
+	console.log(commentId, 'gholasdgei');
 
 	const oneSong = useSelector((state) => state.songs[id]);
 
 	const user = useSelector((state) => state.session.user);
 
 	const [isLoaded, setIsLoaded] = useState(false);
-	const [content, setContent] = useState('');
+	const singleComment = Object.values(
+		useSelector((state) => state?.singleComment)
+	)[0];
+	const comment = singleComment?.content;
+	const [content, setContent] = useState(comment);
 	const [errors, setErrors] = useState([]);
 	const commentObject = useSelector((state) => state.comments);
-	const singleComment = Object.values(commentObject);
+
 
 	useEffect(() => {
-		dispatch(getAllSongs());
+		dispatch(getAllSongs()).then(
+			dispatch(getSingleCommentBySongId(id, commentId))
+		);
 		setIsLoaded(true);
 	}, [dispatch, id]);
 
@@ -48,38 +56,39 @@ function EditComment({ setShowModal, commentId }) {
 
 	return (
 		<div>
-			{singleComment.map((comment) => (
+			{/* {singleComment.map((comment) => (
 				<div key={comment.id}>
-					<div className="editsongtitle-container-4">
-						<div className="editmodal-ptag-title">
-							<p>Edit Your Comment</p>
-						</div>
-						<div className="editmodal-form-container">
-							<form onSubmit={handleSubmit}>
-								<div className="signin-login-errors">
-									{errors.map((error, ind) => (
-										<div key={ind}>{error}</div>
-									))}
-								</div>
-								<div className='textarea-container-editcomment'>
-									<textarea
-										className="titleofsong-input4"
-										placeholder={comment.content}
-										value={content}
-										onChange={(e) => setContent(e.target.value)}
-									/>
-								</div>
-								<div>
-									<button className="signin-btn" type="submit">
-										Submit
-									</button>
-								</div>
-							</form>
-						</div>
-					</div>
+					{console.log(singl)} */}
+			<div className="editsongtitle-container-4">
+				<div className="editmodal-ptag-title">
+					<p>Edit Your Comment</p>
 				</div>
-			))}
+				<div className="editmodal-form-container">
+					<form onSubmit={handleSubmit}>
+						<div className="signin-login-errors">
+							{errors.map((error, ind) => (
+								<div key={ind}>{error}</div>
+							))}
+						</div>
+						<div className="textarea-container-editcomment">
+							<textarea
+								className="titleofsong-input4"
+								placeholder={comment}
+								value={content}
+								onChange={(e) => setContent(e.target.value)}
+							/>
+						</div>
+						<div>
+							<button className="signin-btn" type="submit">
+								Submit
+							</button>
+						</div>
+					</form>
+				</div>
+			</div>
 		</div>
+		// ))}
+		// </div>
 	);
 }
 
