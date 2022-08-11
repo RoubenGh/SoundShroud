@@ -88,26 +88,40 @@ function AllComments() {
 				<div className="allcomments-single-container-actual">
 					{singleComment.map((comment) => (
 						<div key={comment.id}>
-							<div>
-								<p>{comment.username}</p>
-							</div>
-							<div>
-								<h2>{comment.content}</h2>
-							</div>
-							<div>
-								{comment?.user_id === user?.id ? (
-									<div>
-										<EditCommentModal commentId={comment.id} />
-										<button
-											id={comment.id}
-											onClick={(e) => commentDeleter(e, comment)}
-										>
-											Delete Comment
-										</button>
+							<div className="single-comment-container">
+								<div className="actual-single-comment">
+									<div className="comments-username">
+										<p className="comments-username-p">
+											{comment.username}
+										</p>
 									</div>
-								) : (
-									<></>
-								)}
+									<div className="comments-comments">
+										<p className="comments-comments-p">
+											{comment.content}
+										</p>
+									</div>
+								</div>
+								<div className="singlecomment-bts">
+									{comment?.user_id === user?.id ? (
+										<div>
+											<div className='singlecomment-edit-btn-container'>
+												<EditCommentModal commentId={comment.id} />
+											</div>
+											<div>
+												<button className='singlecomment-edit-btn'
+													id={comment.id}
+													onClick={(e) =>
+														commentDeleter(e, comment)
+													}
+												>
+													Delete
+												</button>
+											</div>
+										</div>
+									) : (
+										<></>
+									)}
+								</div>
 							</div>
 						</div>
 					))}
