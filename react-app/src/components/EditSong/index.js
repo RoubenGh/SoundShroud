@@ -31,6 +31,7 @@ function EditSong({ setShowModal }) {
 			title,
 		};
 
+		if (!title) errors.push('Title is required');
 		if (title.length > 20)
 			errors.push('Title must be less than 20 characters');
 		if (errors.length) {

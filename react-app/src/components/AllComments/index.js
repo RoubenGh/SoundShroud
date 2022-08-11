@@ -45,6 +45,10 @@ function AllComments() {
 		const validationErrors = [];
 		setErrors([])
 
+		if (!comment) {
+			validationErrors.push('Comment must be filled out');
+		}
+
 		if (comment.length > 500)
 			validationErrors.push('Comment must be less than 500 characters');
 
