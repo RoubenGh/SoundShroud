@@ -58,6 +58,7 @@ function EditComment({ setShowModal, commentId }) {
 		};
 		dispatch(editCommentBySongId(data));
 		setShowModal(false);
+		setContent('');
 	};
 
 	return (
