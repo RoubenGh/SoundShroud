@@ -13,6 +13,7 @@ function EditSong({ setShowModal }) {
 
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [title, setTitle] = useState('');
+	const [validationError, setValidationError] = useState([]);
 
 	useEffect(() => {
 		dispatch(getAllSongs());
@@ -21,25 +22,52 @@ function EditSong({ setShowModal }) {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		setValidationError([]);
+		const errors = [];
 
 		const data = {
 			id: oneSong.id,
 			title,
 		};
-		dispatch(editSongTitle(data));
-		setShowModal(false);
+
+		if (title.length > 20)
+			errors.push('Title must be less than 20 characters');
+		if (errors.length) {
+			setValidationError(errors);
+			return;
+		} else {
+			dispatch(editSongTitle(data));
+			setShowModal(false);
+		}
 	};
 
 	return (
-		<div>
-			<form onSubmit={handleSubmit}>
-				<input
-					placeholder="Title Of Song"
-					value={title}
-					onChange={(e) => setTitle(e.target.value)}
-				/>
-				<button type="submit">Submit</button>
-			</form>
+		<div className="editsongtitle-container">
+			<div className="editmodal-ptag-title">
+				<p>Edit Song Title</p>
+			</div>
+			<div className="editmodal-form-container">
+				<form onSubmit={handleSubmit}>
+					<div className="signin-login-errors">
+						{validationError.map((error, idx) => (
+							<div key={idx}>{error}</div>
+						))}
+					</div>
+					<div>
+						<input
+							placeholder={oneSong.title}
+							className="titleofsong-input3"
+							value={title}
+							onChange={(e) => setTitle(e.target.value)}
+						/>
+					</div>
+					<div>
+						<button className="signin-btn" type="submit">
+							Submit
+						</button>
+					</div>
+				</form>
+			</div>
 		</div>
 	);
 }
