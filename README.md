@@ -8,16 +8,16 @@ https://sound-shroud.herokuapp.com/
 Welcome to SoundShroud! SoundShroud is a clone of the original Sound Cloud which lets people discover and enjoy the greatest selection of music. Any Artist can create an account, and upload their song for anyone on SoundShroud to hear. As a user, you can browse SoundShroud and see what songs artists are posting and enjoy your favorite tunes! 
 
 ## Splash Page
-![image](https://user-images.githubusercontent.com/100460237/184195562-b9049493-26c8-47eb-82fd-6abf74a5d1b4.png)
+![image](https://user-images.githubusercontent.com/100460237/184197843-4f4f4d83-8112-4593-9eba-487eccd89921.png)
 
 ## Discover Page
-![image](https://user-images.githubusercontent.com/100460237/184196703-2a0253ff-0dee-4bb1-80fb-b1d07cf1886d.png)
+![image](https://user-images.githubusercontent.com/100460237/184197913-965ef1d9-35fe-450f-910b-77a71a04dd6f.png)
 
 ## Upload Page
-![image](https://user-images.githubusercontent.com/100460237/184196882-f2f3653d-34b7-4921-9bbd-b7e43cc48f2a.png)
+![image](https://user-images.githubusercontent.com/100460237/184197961-b45004aa-e93a-4bc3-a1e3-be4ebd6c8276.png)
 
 ## Single Song Page
-![image](https://user-images.githubusercontent.com/100460237/184197065-30086829-7a73-4f5c-9140-4438790cefd9.png)
+![image](https://user-images.githubusercontent.com/100460237/184198018-2421effb-1bd6-4260-adcb-611f9faadbd6.png)
 
 ## Instillation 
 * ```git clone https://github.com/RoubenGh/SoundShroud```
