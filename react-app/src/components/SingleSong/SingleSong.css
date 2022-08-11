@@ -95,6 +95,7 @@
 .addcomment-input-container {
 	display: flex;
 	align-content: stretch;
+    margin-right: 10px;
 }
 
 .testinginputwidth {
