@@ -19,11 +19,17 @@ function EditComment({ setShowModal, commentId }) {
 	const singleComment = Object.values(
 		useSelector((state) => state?.singleComment)
 	)[0];
-	const comment = singleComment?.content;
-	const [content, setContent] = useState(comment);
+	// const comment = singleComment?.content;
+	const [content, setContent] = useState('');
 	const [errors, setErrors] = useState([]);
 	const commentObject = useSelector((state) => state.comments);
 
+	// new use effect set content with comment when comment changes havve the dependency on singleComment
+
+	useEffect(() => {
+		setContent(singleComment?.content);
+		setIsLoaded(true);
+	} ,[singleComment]);
 
 	useEffect(() => {
 		dispatch(getAllSongs()).then(
@@ -73,7 +79,7 @@ function EditComment({ setShowModal, commentId }) {
 						<div className="textarea-container-editcomment">
 							<textarea
 								className="titleofsong-input4"
-								placeholder={comment}
+								// placeholder={comment}
 								value={content}
 								onChange={(e) => setContent(e.target.value)}
 							/>

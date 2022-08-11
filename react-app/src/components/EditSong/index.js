@@ -55,7 +55,7 @@ function EditSong({ setShowModal }) {
 					</div>
 					<div>
 						<input
-							placeholder={oneSong.title}
+							
 							className="titleofsong-input3"
 							value={title}
 							onChange={(e) => setTitle(e.target.value)}
