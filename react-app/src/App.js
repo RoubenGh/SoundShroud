@@ -66,15 +66,15 @@ function App() {
 				<ProtectedRoute path="/users/:userId" exact={true}>
 					<User />
 				</ProtectedRoute>
-				<Route path="/upload" exact={true}>
+				<ProtectedRoute path="/upload" exact={true}>
 					<UploadSong />
-				</Route>
-				<Route path="/discover" exact={true}>
+				</ProtectedRoute>
+				<ProtectedRoute path="/discover" exact={true}>
 					<Discover playSong={playSong}/>
-				</Route>
-				<Route path="/songs/:id" exact={true}>
+				</ProtectedRoute>
+				<ProtectedRoute path="/songs/:id" exact={true}>
 					<SingleSong playSong={playSong}/>
-				</Route>
+				</ProtectedRoute>
 			</Switch>
 			<div className="audio-player-footer">
 				<AudioPlayer

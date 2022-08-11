@@ -19,7 +19,7 @@ const LoginForm = ({ setShowModal }) => {
 			setErrors(data);
 		} else {
 			setShowModal(false);
-			history.push('/discover');
+			return <Redirect to="/discover" />;
 		}
 	};
 
@@ -31,12 +31,12 @@ const LoginForm = ({ setShowModal }) => {
 		setPassword(e.target.value);
 	};
 
-	const demoUser = (e) => {
+	const demoUser = async (e) => {
 		const email = 'SoundShroudDemo@aa.io';
 		const password = 'password';
-		dispatch(login(email, password));
+		await dispatch(login(email, password));
 		setShowModal(false);
-		history.push('/discover');
+		return <Redirect to="/discover" />;
 	};
 
 	if (user) {

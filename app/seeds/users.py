@@ -8,10 +8,13 @@ def seed_users():
         username='marnie', email='marnie@aa.io', password='password')
     bobbie = User(
         username='bobbie', email='bobbie@aa.io', password='password')
+    SoundShroudDemo = User(
+        username='SSDemo', email='SoundShroudDemo@aa.io', password='password')
 
     db.session.add(demo)
     db.session.add(marnie)
     db.session.add(bobbie)
+    db.session.add(SoundShroudDemo)
 
     db.session.commit()
 

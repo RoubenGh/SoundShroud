@@ -1,11 +1,12 @@
 import './Discover.css';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 import { getAllSongs } from '../../store/songs';
 import NavBar from '../NavBar';
 
 function Discover({ playSong }) {
+	const history = useHistory() ;
 	const dispatch = useDispatch();
 
 	const user = useSelector((state) => state.session.user);
@@ -16,6 +17,7 @@ function Discover({ playSong }) {
 	useEffect(() => {
 		dispatch(getAllSongs());
 	}, [dispatch]);
+
 
 	return (
 		<>

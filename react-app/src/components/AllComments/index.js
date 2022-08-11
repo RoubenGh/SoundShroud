@@ -43,6 +43,7 @@ function AllComments() {
 		e.preventDefault();
 
 		const validationErrors = [];
+		setErrors([])
 
 		if (comment.length > 500)
 			validationErrors.push('Comment must be less than 500 characters');
@@ -53,7 +54,7 @@ function AllComments() {
 		}
 
 		if (!user) {
-			history.push('/login');
+			history.push('/');
 			return;
 		}
 
