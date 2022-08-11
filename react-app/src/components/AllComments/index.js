@@ -85,25 +85,30 @@ function AllComments() {
 						</form>
 					</div>
 				</div>
-				<div>
+				<div className="allcomments-single-container-actual">
 					{singleComment.map((comment) => (
 						<div key={comment.id}>
-							<h2>{comment.content}</h2>
-							{comment?.user_id === user?.id ? (
-								<div>
-									<EditCommentModal commentId={comment.id} />
-									<button
-										id={comment.id}
-										onClick={(e) => commentDeleter(e, comment)}
-									>
-										Delete Comment
-									</button>
-								</div>
-							) : (
-								<></>
-							)}
-
-							<p>{comment.username}</p>
+							<div>
+								<p>{comment.username}</p>
+							</div>
+							<div>
+								<h2>{comment.content}</h2>
+							</div>
+							<div>
+								{comment?.user_id === user?.id ? (
+									<div>
+										<EditCommentModal commentId={comment.id} />
+										<button
+											id={comment.id}
+											onClick={(e) => commentDeleter(e, comment)}
+										>
+											Delete Comment
+										</button>
+									</div>
+								) : (
+									<></>
+								)}
+							</div>
 						</div>
 					))}
 				</div>
