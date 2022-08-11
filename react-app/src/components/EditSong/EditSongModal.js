@@ -7,7 +7,7 @@ function EditSongModal() {
 
 	return (
 		<div>
-			<button onClick={() => setShowModal(true)}>Edit</button>
+			<button  className='singlesongpage-dlt-btn' onClick={() => setShowModal(true)}>Edit Title</button>
 			{showModal && (
 				<Modal onClose={() => setShowModal(false)}>
 					<EditSong setShowModal={setShowModal} />
@@ -15,7 +15,7 @@ function EditSongModal() {
 			)}
 		</div>
 	);
-    
+
 }
 
 export default EditSongModal;

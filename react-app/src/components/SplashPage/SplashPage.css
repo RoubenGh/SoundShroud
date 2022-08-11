@@ -167,6 +167,7 @@ html {
 	background-color: rgb(242, 242, 242);
 	height: 100%;
 	left: 0;
+	right: 0;
 }
 
 body {
@@ -285,7 +286,7 @@ body {
 
 .SplashLinkedin{
 	font-size: 42px;
-	
+
 }
 
 .splash-page-title{

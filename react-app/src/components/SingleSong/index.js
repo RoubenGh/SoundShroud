@@ -14,6 +14,7 @@ function SingleSong({ playSong }) {
 	const { id } = useParams();
 
 	const oneSong = useSelector((state) => state.songs[id]);
+	console.log(oneSong);
 	const user = useSelector((state) => state.session.user);
 
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -32,24 +33,32 @@ function SingleSong({ playSong }) {
 	return (
 		isLoaded && (
 			<>
-			<NavBar />
-				<div className='singlesongpage-main'>
-					<button
-						onClick={(e) => {
-							playSong(oneSong);
-						}}
-					>
-						{oneSong.title}
-					</button>
-					{oneSong?.user_id === user?.id ? (
-						<div>
-							<EditSongModal />
-							<button onClick={songDeleter}>Delete Song</button>
+				<NavBar />
+				<div className="singlesongpage-main">
+					<div className="singlesongpage-left-container">
+						<img
+							className="singlesongpage-albumart"
+							src="https://i.imgur.com/dpxY8Vh.png"
+							onClick={(e) => {
+								playSong(oneSong);
+							}}
+						/>
+						<div className="singlesongpage-title">{oneSong.title}</div>
+						<div className="singlesongpage-username">
+							{oneSong.user_info.username}
 						</div>
-					) : (
-						<></>
-					)}
-					<AllComments />
+						{oneSong?.user_id === user?.id ? (
+							<div className='singlesongpage-editdlt-btns-container'>
+								<EditSongModal />
+								<button className='singlesongpage-dlt-btn' onClick={songDeleter}>Delete Song</button>
+							</div>
+						) : (
+							<></>
+						)}
+					</div>
+					<div className="singlesongpage-right-container">
+						<AllComments />
+					</div>
 				</div>
 			</>
 		)
