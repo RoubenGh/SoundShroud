@@ -27,7 +27,6 @@ function UploadSong() {
 			username: user?.username,
 		};
 
-		console.log(file, '00000000');
 		if (file.type !== 'audio/mpeg' && file.type !== 'video/mp4')
 			errors.push('Selected File is not Supported!'); // selected file is not supported
 		if (errors.length) {
@@ -47,29 +46,43 @@ function UploadSong() {
 	return (
 		<>
 			<NavBar />
-			<div className='main-upload'>
-				<h3>Upload Song</h3>
-				<div>
-					<div>
-						<input
-							placeholder="Title Of Song"
-							value={title}
-							onChange={(e) => setTitle(e.target.value)}
-						/>
+			<div className="upload-main-container">
+				<div className="main-upload">
+					<div className="upload-song-title">
+						<h3 className="signin-login-title">Upload Song</h3>
 					</div>
 					<form onSubmit={handleSubmit}>
-						{validationError.map((error, idx) => (
-							<div key={idx}>{error}</div>
-						))}
-						<div>
+						<div className='signin-login-errors'>
+							{validationError.map((error, idx) => (
+								<div key={idx}>{error}</div>
+							))}
+						</div>
+						{/* <div>
+							<strong className="">{file?.name}</strong>
+						</div> */}
+						<div className="title-upload-container">
 							<input
+
+								className="titleofsong-input"
+								placeholder="Title Of Song"
+								value={title}
+								onChange={(e) => setTitle(e.target.value)}
+							/>
+						</div>
+						<div className="title-upload-container">
+							<label></label>
+							<input
+								className="titleofsong-input2"
 								type="file"
 								name="upload song"
 								onChange={handleUpload}
 								accept=".mp3, .mp4"
-							/>
-							<strong>{file?.name}</strong>
-							<button type="submit">Submit</button>
+								/>
+						</div>
+						<div className="title-upload-container">
+							<button className="submit-button-upload" type="submit">
+								Submit
+							</button>
 						</div>
 					</form>
 				</div>

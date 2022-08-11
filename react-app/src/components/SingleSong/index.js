@@ -6,6 +6,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory, Redirect, NavLink } from 'react-router-dom';
 import EditSongModal from '../EditSong/EditSongModal';
 import AllComments from '../AllComments';
+import NavBar from '../NavBar';
 
 function SingleSong({ playSong }) {
 	const history = useHistory();
@@ -13,7 +14,6 @@ function SingleSong({ playSong }) {
 	const { id } = useParams();
 
 	const oneSong = useSelector((state) => state.songs[id]);
-	console.log('55555555', oneSong)
 	const user = useSelector((state) => state.session.user);
 
 	const [isLoaded, setIsLoaded] = useState(false);
@@ -31,25 +31,27 @@ function SingleSong({ playSong }) {
 
 	return (
 		isLoaded && (
-			<div>
-				<button
-					onClick={(e) => {
-						playSong(oneSong);
-					}}
-				>
-					{oneSong.title}
-				</button>
+			<>
+			<NavBar />
+				<div className='singlesongpage-main'>
+					<button
+						onClick={(e) => {
+							playSong(oneSong);
+						}}
+					>
+						{oneSong.title}
+					</button>
 					{oneSong?.user_id === user?.id ? (
-				<div>
-					<EditSongModal />
-					<button onClick={songDeleter}>Delete Song</button>
+						<div>
+							<EditSongModal />
+							<button onClick={songDeleter}>Delete Song</button>
+						</div>
+					) : (
+						<></>
+					)}
+					<AllComments />
 				</div>
-				) : (
-					<></>
-)}
-				<AllComments/>
-
-			</div>
+			</>
 		)
 	);
 }

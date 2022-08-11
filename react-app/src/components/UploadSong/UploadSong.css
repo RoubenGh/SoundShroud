@@ -1,3 +1,104 @@
-.main-upload{
-    top: 46px;
+.main-upload {
+	width: 500px;
+	height: 350px;
+	margin: auto;
+	outline: solid 1px #dddddd;
+	background-color: white;
+	justify-content: center;
+	align-items: center;
+	padding-top: 2rem;
+	padding-bottom: 2rem;
+}
+
+.uploadtitle-input {
+	width: 100%;
+	margin-bottom: 2rem;
+}
+
+.inputupload-container {
+	width: 100%;
+}
+
+.upload-main-container {
+	display: block;
+	width: 100%;
+	height: 100%;
+	border-radius: 5px;
+	padding: 20px;
+	margin-top: 16rem;
+}
+
+.upload-song-title {
+	display: flex;
+	justify-content: center;
+}
+
+.input-container-upload {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+
+.submitbtn-container {
+	width: 200px;
+}
+
+::file-selector-button {
+	display: none;
+}
+
+.title-upload-container {
+	display: flex;
+	justify-content: center;
+	margin-bottom: 2rem;
+}
+
+.titleofsong-input {
+	width: 300px;
+	line-height: 1.3;
+	font-weight: 600;
+	font-size: 16px;
+	padding: 7px 8px;
+	border-radius: 5px;
+	border: 1px solid #ccc;
+	font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+		Garuda, Verdana, Tahoma, sans-serif;
+}
+
+.titleofsong-input2 {
+	cursor: pointer !important;
+	width: 300px;
+    display: flex;
+    justify-content: center;
+	line-height: 1.3;
+	font-weight: 600;
+	font-size: 16px;
+	padding: 7px 8px;
+	border-radius: 5px;
+	background-color: #f50;
+	color: white;
+	text-align: center;
+	border: 1px solid #ccc;
+	font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+		Garuda, Verdana, Tahoma, sans-serif;
+}
+
+
+.submit-button-upload {
+	width: 318px;
+	height: 36.8px;
+	border-color: #f50;
+	background-color: #f50;
+	color: white;
+	font-size: 16px;
+	line-height: 1.3;
+	font-weight: 100;
+	cursor: pointer;
+	border-radius: 5px;
+	border: 1px solid #e5e5e5;
+	margin-bottom: 2rem;
+	font-weight: 600;
+	font-family: Interstate, Lucida Grande, Lucida Sans Unicode, Lucida Sans,
+		Garuda, Verdana, Tahoma, sans-serif;
 }
