@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { editCommentBySongId } from '../../store/comments';
-import { getAllSongs, editSongTitle } from '../../store/songs';
+import { getAllSongs } from '../../store/songs';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory, Redirect, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import './EditComment.css'
 
 function EditComment({ setShowModal, commentId }) {

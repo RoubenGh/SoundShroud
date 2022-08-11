@@ -2,7 +2,7 @@ import './EditSong.css';
 import React, { useState, useEffect } from 'react';
 import { getAllSongs, editSongTitle } from '../../store/songs';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory, Redirect, NavLink } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 function EditSong({ setShowModal }) {
 	const dispatch = useDispatch();

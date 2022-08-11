@@ -1,5 +1,5 @@
 import './UploadSong.css';
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import { uploadSong } from '../../store/songs';
@@ -58,9 +58,6 @@ function UploadSong() {
 								<div key={idx}>{error}</div>
 							))}
 						</div>
-						{/* <div>
-							<strong className="">{file?.name}</strong>
-						</div> */}
 						<div className="title-upload-container">
 							<input
 

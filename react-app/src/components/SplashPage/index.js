@@ -1,8 +1,7 @@
 import React from 'react';
 import './SplashPage.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
 import { getAllSongs } from '../../store/songs';
 import SignUpModal from '../auth/SignUpModal';
 import LoginModal from '../auth/LoginModal';
@@ -36,13 +35,6 @@ function SplashPage({ playSong }) {
 								SoundShroud gives you space to create, find your fans,
 								and connect with other artists.
 							</p>
-							{/* <a
-									className="github-name-footer"
-									target="_blank"
-									href="https://github.com/RoubenGh"
-								>
-									<div className="our-names">By: Rouben Ghambaryan</div>
-								</a> */}
 						</div>
 					</div>
 				</div>

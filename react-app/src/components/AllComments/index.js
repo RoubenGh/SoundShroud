@@ -6,8 +6,7 @@ import {
 } from '../../store/comments';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory, Redirect, NavLink } from 'react-router-dom';
-import EditComment from '../EditComment';
+import { useParams, useHistory } from 'react-router-dom';
 import EditCommentModal from '../EditComment/EditCommentModal';
 
 function AllComments() {
@@ -31,7 +30,6 @@ function AllComments() {
 	}, [dispatch, id]);
 
 	const commentDeleter = (e, comment) => {
-		console.log('2222222222', comment);
 
 		const data = {
 			song_id: oneSong.id,

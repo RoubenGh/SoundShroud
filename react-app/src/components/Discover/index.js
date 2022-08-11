@@ -1,7 +1,7 @@
 import './Discover.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { NavLink, Redirect } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { getAllSongs } from '../../store/songs';
 import NavBar from '../NavBar';
 
@@ -46,7 +46,6 @@ function Discover({ playSong }) {
 												{song.title}
 											</NavLink>
 										</div>
-										{/* <p>{song.title}</p> */}
 										<p className='discover-page-username'>{song.user_info.username}</p>
 									</div>
 								</li>

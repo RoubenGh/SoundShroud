@@ -3,7 +3,7 @@ import React from 'react';
 import { getAllSongs, deleteSong } from '../../store/songs';
 import { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams, useHistory, Redirect, NavLink } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import EditSongModal from '../EditSong/EditSongModal';
 import AllComments from '../AllComments';
 import NavBar from '../NavBar';
@@ -14,11 +14,9 @@ function SingleSong({ playSong }) {
 	const { id } = useParams();
 
 	const oneSong = useSelector((state) => state.songs[id]);
-	console.log(oneSong);
 	const user = useSelector((state) => state.session.user);
 
 	const [isLoaded, setIsLoaded] = useState(false);
-	// const [title, setTitle] = useState('');
 
 	useEffect(() => {
 		dispatch(getAllSongs());

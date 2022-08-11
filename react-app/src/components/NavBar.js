@@ -1,8 +1,6 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import LogoutButton from './auth/LogoutButton';
-import SignUpModal from './auth/SignUpModal';
-import LoginModal from './auth/LoginModal';
 import './NavBar.css';
 
 const NavBar = () => {
@@ -10,8 +8,11 @@ const NavBar = () => {
 		<nav className="navbar-main">
 			<ul className="navbar-buttons-left-main">
 				<li className="navbar-left-logo">
-					<NavLink className='logotest' to="/discover" exact={true}>
-					</NavLink>
+					<NavLink
+						className="logotest"
+						to="/discover"
+						exact={true}
+					></NavLink>
 				</li>
 				<li className="navbar-please-work">
 					<NavLink
