@@ -23,6 +23,7 @@ function AllComments() {
 
 	const [isLoaded, setIsLoaded] = useState(false);
 	const [comment, setComment] = useState('');
+	const [errors, setErrors] = useState([]);
 
 	useEffect(() => {
 		dispatch(getCommentsBySongId(id));
@@ -42,6 +43,16 @@ function AllComments() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+
+		const validationErrors = [];
+
+		if (comment.length > 500)
+			validationErrors.push('Comment must be less than 500 characters');
+
+		if (validationErrors.length) {
+			setErrors(validationErrors);
+			return;
+		}
 
 		if (!user) {
 			history.push('/login');
@@ -63,6 +74,11 @@ function AllComments() {
 		isLoaded && (
 			<div className="allcomments-container">
 				<div>
+					<div className="signin-login-errors">
+						{errors.map((error, ind) => (
+							<div key={ind}>{error}</div>
+						))}
+					</div>
 					<div className="addcomment-container">
 						<form
 							onSubmit={handleSubmit}
@@ -104,11 +120,12 @@ function AllComments() {
 								<div className="singlecomment-bts">
 									{comment?.user_id === user?.id ? (
 										<div>
-											<div className='singlecomment-edit-btn-container'>
+											<div className="singlecomment-edit-btn-container">
 												<EditCommentModal commentId={comment.id} />
 											</div>
 											<div>
-												<button className='singlecomment-edit-btn'
+												<button
+													className="singlecomment-edit-btn"
 													id={comment.id}
 													onClick={(e) =>
 														commentDeleter(e, comment)

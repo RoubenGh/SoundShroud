@@ -28,7 +28,8 @@ function UploadSong() {
 		};
 
 		if (file.type !== 'audio/mpeg' && file.type !== 'video/mp4')
-			errors.push('Selected File is not Supported!'); // selected file is not supported
+			errors.push('Selected File is not Supported!');// selected file is not supported
+		if (title.length > 20) errors.push('Title must be less than 20 characters');// title is too long
 		if (errors.length) {
 			setValidationError(errors);
 			return;
