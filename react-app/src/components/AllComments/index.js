@@ -61,17 +61,29 @@ function AllComments() {
 
 	return (
 		isLoaded && (
-			<div>
+			<div className="allcomments-container">
 				<div>
-					<form onSubmit={handleSubmit}>
-						<input
-							type="text"
-							value={comment}
-							onChange={(e) => setComment(e.target.value)}
-							placeholder="Add a comment"
-						/>
-						<button type="submit">Submit</button>
-					</form>
+					<div className="addcomment-container">
+						<form
+							onSubmit={handleSubmit}
+							className="addcomment-input-container"
+						>
+							<div className="testinginputwidth">
+								<input
+									className="addingacomment-input"
+									type="text"
+									value={comment}
+									onChange={(e) => setComment(e.target.value)}
+									placeholder="Write a comment"
+								/>
+							</div>
+							<div className="submitbutton-container">
+								<button className="submit-comment-btn" type="submit">
+									Submit
+								</button>
+							</div>
+						</form>
+					</div>
 				</div>
 				<div>
 					{singleComment.map((comment) => (
