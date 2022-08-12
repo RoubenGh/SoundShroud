@@ -46,6 +46,9 @@ function EditComment({ setShowModal, commentId }) {
 		if (content.length > 500)
 			validationErrors.push('Comment must be less than 500 characters');
 
+		if (!content)
+			validationErrors.push('Comment is required');
+
 		if (validationErrors.length) {
 			setErrors(validationErrors);
 			return;
