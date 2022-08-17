@@ -17,3 +17,28 @@ def users():
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
+
+@user_routes.route('/<int:id>/edit', methods=['PUT'])
+@login_required
+def edit_user(id):
+
+    user = User.query.get(id)
+    user.description = request.form.get('description')
+    user.username = request.form.get('username')
+    if len(request.files) != 0:
+        file = request.files["file"]
+        file_url = upload_file_to_s3(file, Config.S3_BUCKET)
+        user.prof_pic_url = file_url
+
+    db.session.add(user)
+    db.session.commit()
+    return user.to_dict()
+
+#delete specific user
+@user_routes.route('/<int:id>', methods=['DELETE'])
+@login_required
+def delete_user(id):
+    user = User.query.get(id)
+    db.session.delete(user)
+    db.session.commit()
+    return jsonify({'message': 'Your account has been removed.'})

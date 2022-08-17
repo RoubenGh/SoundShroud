@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, NavLink, Redirect } from 'react-router-dom';
+import { useSelector, useDispatch } from "react-redux";
+import { getAllSongs } from '../../store/songs';
+import './User.css'
+import { getSingleUser } from '../../store/user';
 
 function User() {
 	const [user, setUser] = useState({});
@@ -30,6 +34,10 @@ function User() {
 			</li>
 			<li>
 				<strong>Email</strong> {user.email}
+			</li>
+			<li>
+				<img src={user.prof_pic_url}/>
+
 			</li>
 		</ul>
 	);
