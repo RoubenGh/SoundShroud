@@ -10,6 +10,8 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    prof_pic_url = db.Column(db.String(255), nullable=False, default='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg')
+    bio = db.Column(db.String(500), nullable=False, default='')
 
     #RELATIONSHIPS
     song = db.relationship('Song', back_populates='user', cascade='all, delete-orphan')
@@ -32,4 +34,6 @@ class User(db.Model, UserMixin):
             'id': self.id,
             'username': self.username,
             'email': self.email
+            'prof_pic_url': self.prof_pic_url,
+            'bio': self.bio
         }

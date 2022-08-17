@@ -3,13 +3,13 @@ from app.models import db, User
 # Adds a demo user, you can add other users here if you want
 def seed_users():
     demo = User(
-        username='Demo', email='demo@aa.io', password='password')
+        username='Demo', email='demo@aa.io', password='password', prof_pic_url='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg', bio='We Love SoundShroud')
     marnie = User(
-        username='marnie', email='marnie@aa.io', password='password')
+        username='marnie', email='marnie@aa.io', password='password', prof_pic_url='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg', bio='We Love SoundShroud')
     bobbie = User(
-        username='bobbie', email='bobbie@aa.io', password='password')
+        username='bobbie', email='bobbie@aa.io', password='password', prof_pic_url='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg', bio='We Love SoundShroud')
     SoundShroudDemo = User(
-        username='SSDemo', email='SoundShroudDemo@aa.io', password='password')
+        username='SSDemo', email='SoundShroudDemo@aa.io', password='password', prof_pic_url='https://t3.ftcdn.net/jpg/03/46/83/96/360_F_346839683_6nAPzbhpSkIpb8pmAwufkC7c5eD7wYws.jpg', bio='We Love SoundShroud')
 
     db.session.add(demo)
     db.session.add(marnie)
