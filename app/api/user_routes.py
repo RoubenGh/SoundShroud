@@ -41,7 +41,7 @@ def edit_user(id):
 
 #delete specific user
 @user_routes.route('/<int:id>', methods=['DELETE'])
-@login_required
+# @login_required
 def delete_user(id):
     user = User.query.get(id)
     db.session.delete(user)
