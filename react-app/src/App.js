@@ -38,8 +38,6 @@ function App() {
 	const playSong = async (song) => {
 		setCurrentSongTitle(song.title)
 		await setCurrentSong(song.song_url)
-
-
 	};
 
 

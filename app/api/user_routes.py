@@ -1,6 +1,11 @@
-from flask import Blueprint, jsonify
-from flask_login import login_required
-from app.models import User
+import boto3
+import botocore
+from flask import Blueprint, jsonify, request
+from flask_login import login_required, current_user
+from sqlalchemy import desc
+from app.models import User, db
+from app.config import Config
+from app.aws_s3 import *
 
 user_routes = Blueprint('users', __name__)
 
@@ -13,17 +18,17 @@ def users():
 
 
 @user_routes.route('/<int:id>')
-@login_required
+# @login_required
 def user(id):
     user = User.query.get(id)
     return user.to_dict()
 
 @user_routes.route('/<int:id>/edit', methods=['PUT'])
-@login_required
+# @login_required
 def edit_user(id):
 
     user = User.query.get(id)
-    user.description = request.form.get('description')
+    user.bio = request.form.get('bio')
     user.username = request.form.get('username')
     if len(request.files) != 0:
         file = request.files["file"]
