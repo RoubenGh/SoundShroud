@@ -28,12 +28,10 @@ def get_all_songs():
 def post_song():
     form = UploadSongForm()
     form['csrf_token'].data = request.cookies['csrf_token']
-    print(form.user_id.data, '000000000000000000000')
     if form.validate_on_submit():
         if "file" not in request.files:
             return "No user_file key in request.files"
         file = request.files["file"]
-        print('THIS IS MY FILE ------', file)
         if file:
             file_url = upload_file_to_s3(file, Config.S3_BUCKET)
             file = Song(
