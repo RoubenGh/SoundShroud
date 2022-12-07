@@ -49,10 +49,10 @@ def edit_user(id):
     form = UserForm()
     user.username = form.username.data
     user.bio = form.bio.data
-    if len(request.files) != 0:
-        file = request.files["file"]
-        file_url = upload_file_to_s3(file, Config.S3_BUCKET)
-        user.prof_pic_url = file_url
+    # if (request.files):
+    file = request.files["file"]
+    file_url = upload_file_to_s3(file, Config.S3_BUCKET)
+    user.prof_pic_url = file_url
 
 
     db.session.add(user)
